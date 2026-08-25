@@ -26,11 +26,13 @@
 		"model-costs.ts"
 	],
 	"pi": {
-		"extensions": ["./model-costs.ts"],
+		"extensions": [
+			"./model-costs.ts"
+		],
 		"image": "https://raw.githubusercontent.com/MaurizioFaeddaDev/model-costs/main/images/model-cost.png"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MaurizioFaeddaDev/model-costs"
+		"url": "git+https://github.com/MaurizioFaeddaDev/model-costs.git"
 	}
 }

@@ -24,11 +24,14 @@ The current model is marked with a ✓ and sorted to the top.
 ## Install
 
 ```bash
+# from npm (recommended)
+pi install npm:pi-model-costs
+
 # from the gallery or a git repo
 pi install git:github.com/MaurizioFaeddaDev/model-costs
 
 # or, to try without installing:
-pi -e git:github.com/MaurizioFaeddaDev/model-costs
+pi -e npm:pi-model-costs
 ```
 
 > Only interactive (`tui`) mode supports the custom picker. In print/RPC mode

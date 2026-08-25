@@ -1,0 +1,34 @@
+{
+	"name": "model-costs",
+	"version": "1.0.0",
+	"description": "Pricing-aware model picker for pi: select models with per-1M-token cost, context window, cache rates, tiers and reasoning support.",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"extension",
+		"model",
+		"pricing",
+		"cost"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Maurizio Faedda"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-ai": "*",
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*",
+		"typebox": "*"
+	},
+	"files": [
+		"model-costs.ts"
+	],
+	"pi": {
+		"extensions": ["./model-costs.ts"]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MaurizioFaeddaDev/model-costs"
+	}
+}

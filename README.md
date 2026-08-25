@@ -19,6 +19,8 @@ the real cost of each model before you switch.
 
 The current model is marked with a ✓ and sorted to the top.
 
+![model-cost picker](images/model-cost.png)
+
 ## Install
 
 ```bash

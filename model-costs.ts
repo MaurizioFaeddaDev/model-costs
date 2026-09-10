@@ -163,7 +163,7 @@ class ModelCostPicker extends Container implements Focusable {
 	}
 
 	private compareItems(a: ModelItem, b: ModelItem): number {
-		// ponytail: pin current-model on top only in default mode; cost sorts rank it purely
+		// Pin current model on top only in default mode; cost sorts rank it purely
 		if (this.sortMode === "default") {
 			const aCurrent = sameModel(this.currentModel, a.model);
 			const bCurrent = sameModel(this.currentModel, b.model);
@@ -190,13 +190,13 @@ class ModelCostPicker extends Container implements Focusable {
 
 	private cycleSort(): void {
 		this.sortMode = SORT_ORDER[(SORT_ORDER.indexOf(this.sortMode) + 1) % SORT_ORDER.length] as SortMode;
-		// ponytail: re-sort cached lists in place, full re-query if model count grows large
+		// Re-sort cached lists in place, full re-query if model count grows large
 		this.allItems = this.sortItems(this.allItems);
 		this.scopedItems = this.sortItems(this.scopedItems);
 		this.activeItems = this.scope === "scoped" ? this.scopedItems : this.allItems;
 		this.footerText.setText(this.renderFooter());
 		this.applyFilter(this.searchInput.getValue());
-		// ponytail: jump selection to current model so it stays visible after re-sort
+		// Jump selection to current model so it stays visible after re-sort
 		const curIdx = this.filtered.findIndex((item) => sameModel(this.currentModel, item.model));
 		this.selectedIndex = curIdx >= 0 ? curIdx : 0;
 		this.updateList();

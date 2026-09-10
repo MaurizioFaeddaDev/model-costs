@@ -7,7 +7,9 @@
  *                          window, cache rates, tiers and reasoning support.
  *                          Same flow as /model: arrows to navigate, type to
  *                          fuzzy-filter, Tab toggles all/scoped (when scoped
- *                          models are configured), Enter selects, Esc cancels.
+ *                          models are configured), Enter selects, Esc
+ *                          cancels. ctrl+s cycles cost sorting (input /
+ *                          output / total, ascending or descending).
  *
  *   Footer status        — pricing of the currently active model
  *                          (set SHOW_STATUS = false below to disable).

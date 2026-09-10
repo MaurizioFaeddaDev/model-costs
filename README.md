@@ -11,13 +11,16 @@ the real cost of each model before you switch.
   - context window and max output tokens
   - cache read/write rates and pricing tiers
   - reasoning support and modality (text / text+image)
+  - **`ctrl+s` cost sorting** — cycle through default, input ↑↓, output ↑↓
+    and total (input + output) ↑↓; the active mode is shown in the footer
   - same flow as `/model`: arrows to navigate, type to fuzzy-filter, `Tab`
     toggles all/scoped (when scoped models are configured), `Enter` selects,
     `Esc` cancels
 - **Footer status** — pricing of the currently active model in the footer
   (disable it by setting `SHOW_STATUS = false` in the source).
 
-The current model is marked with a ✓ and sorted to the top.
+In default order the current model is marked with a ✓ and sorted to the top;
+cost sorts rank models purely by price (ties broken by provider/id).
 
 ![model-cost picker](images/model-cost.png)
 

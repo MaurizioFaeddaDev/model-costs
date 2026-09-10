@@ -2,7 +2,7 @@
 	"name": "pi-model-costs",
 	"displayName": "model-costs",
 	"version": "1.0.0",
-	"description": "Pricing-aware model picker for pi: select models with per-1M-token cost, context window, cache rates, tiers and reasoning support.",
+	"description": "Pricing-aware model picker for pi: select models with per-1M-token cost, context window, cache rates, tiers and reasoning support. Sort models by input/output/total cost with ctrl+s.",
 	"type": "module",
 	"keywords": [
 		"pi-package",

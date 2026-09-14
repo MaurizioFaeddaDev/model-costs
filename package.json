@@ -1,7 +1,7 @@
 {
 	"name": "pi-model-costs",
 	"displayName": "model-costs",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Pricing-aware model picker for pi: select models with per-1M-token cost, context window, cache rates, tiers and reasoning support. Sort models by input/output/total cost with ctrl+s.",
 	"type": "module",
 	"keywords": [
@@ -29,10 +29,10 @@
 		"extensions": [
 			"./model-costs.ts"
 		],
-		"image": "https://raw.githubusercontent.com/MaurizioFaeddaDev/model-costs/main/images/model-cost.png"
+		"image": "https://raw.githubusercontent.com/MrDaGree/model-costs/main/images/model-cost.png"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MaurizioFaeddaDev/model-costs.git"
+		"url": "git+https://github.com/MrDaGree/model-costs.git"
 	}
 }

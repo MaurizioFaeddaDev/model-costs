@@ -17,12 +17,28 @@ the real cost of each model before you switch.
     toggles all/scoped (when scoped models are configured), `Enter` selects,
     `Esc` cancels
 - **Footer status** — pricing of the currently active model in the footer
-  (disable it by setting `SHOW_STATUS = false` in the source).
+  (off by default; enable via settings.json — see Settings below).
 
 In default order the current model is marked with a ✓ and sorted to the top;
 cost sorts rank models purely by price (ties broken by provider/id).
 
 ![model-cost picker](images/model-cost.png)
+
+## Settings
+
+The footer status is off by default. Enable it with the `modelCosts`
+settings key in settings.json:
+
+```json
+{
+  "modelCosts": {
+    "showStatus": true
+  }
+}
+```
+
+Add it to `~/.pi/agent/settings.json` (global, all projects) or
+`.pi/settings.json` (current project). Project settings override global.
 
 ## Install
 
@@ -31,7 +47,7 @@ cost sorts rank models purely by price (ties broken by provider/id).
 pi install npm:pi-model-costs
 
 # from the gallery or a git repo
-pi install git:github.com/MaurizioFaeddaDev/model-costs
+pi install git:github.com/MrDaGree/model-costs
 
 # or, to try without installing:
 pi -e npm:pi-model-costs

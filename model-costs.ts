@@ -11,16 +11,40 @@
  *                          cancels. ctrl+s cycles cost sorting (input /
  *                          output / total, ascending or descending).
  *
- *   Footer status        — pricing of the currently active model
- *                          (set SHOW_STATUS = false below to disable).
+ *   Footer status        — pricing of the currently active model.
+ *                          Off by default. Enable with `modelCosts.showStatus`
+ *                          in settings.json (project settings override global).
  */
 
+import * as fs from "node:fs";
+import * as os from "node:os";
+import * as path from "node:path";
 import type { Api, Model, ModelCostTier, ThinkingLevel } from "@earendil-works/pi-ai";
 import type { ExtensionAPI, Theme } from "@earendil-works/pi-coding-agent";
 import { DynamicBorder } from "@earendil-works/pi-coding-agent";
 import { Container, type Focusable, fuzzyFilter, Input, matchesKey, Spacer, Text } from "@earendil-works/pi-tui";
 
-const SHOW_STATUS = true;
+// ---------------------------------------------------------------------------
+// Settings
+// ---------------------------------------------------------------------------
+
+function readJson(file: string): any {
+	if (!fs.existsSync(file)) return undefined;
+	try {
+		return JSON.parse(fs.readFileSync(file, "utf8"));
+	} catch {
+		return undefined;
+	}
+}
+
+/** `modelCosts.showStatus` from settings.json. Project settings override global; default off. */
+function readShowStatus(cwd: string): boolean {
+	const globalSettings = readJson(path.join(os.homedir(), ".pi", "agent", "settings.json"));
+	const projectSettings = readJson(path.join(cwd, ".pi", "settings.json"));
+	const g = globalSettings?.modelCosts?.showStatus;
+	const p = projectSettings?.modelCosts?.showStatus;
+	return p !== undefined ? p : g !== undefined ? g : false;
+}
 
 // ---------------------------------------------------------------------------
 // Formatting helpers
@@ -360,15 +384,17 @@ export default function (pi: ExtensionAPI) {
 		return `${model.id} · $${money(model.cost.input)}/$${money(model.cost.output)} per 1M`;
 	};
 
-	if (SHOW_STATUS) {
-		pi.on("session_start", async (_event, ctx) => {
+	pi.on("session_start", async (_event, ctx) => {
+		if (readShowStatus(ctx.cwd)) {
 			ctx.ui.setStatus("model-costs", statusText(ctx.model));
-		});
+		}
+	});
 
-		pi.on("model_select", async (event, ctx) => {
+	pi.on("model_select", async (event, ctx) => {
+		if (readShowStatus(ctx.cwd)) {
 			ctx.ui.setStatus("model-costs", statusText(event.model));
-		});
-	}
+		}
+	});
 
 	pi.registerCommand("model-cost", {
 		description: "Select a model with per-1M-token pricing, context window and cache rates",
